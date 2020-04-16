@@ -121,6 +121,9 @@
 {% if share.write_list is defined %}
   write list = {{ share.write_list }}
 {% endif %}
+{% if share.read_list is defined %}
+  read list = {{ share.read_list }}
+{% endif %}
 {% if share.user is defined %}
   force user = {{ share.user }}
 {% endif %}
