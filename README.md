@@ -160,7 +160,8 @@ A complete overview of share options follows below. Only `name` is required, the
 | `include_file`         | -                               | Samba combatible configuration file with options to be included for this share (see below).    |
 | `force_create_mode`    | `0664`                          | See the Samba documentation for details.                                                       |
 | `force_directory_mode` | `0775`                          | See the Samba documentation for details.                                                       |
-| `group`                | `users`                         | The user group files in the share will be added to.                                            |
+| `group`                | `users`                         | The user group files in the share will be added to. (force group)                              |
+| `user`                 | -                               | The user files in the share will be added to. (force user)                              |
 | `guest_ok`             | -                               | Allow guest access.                                                                            |
 | `name` (required)      | -                               | The name of the share.                                                                         |
 | `owner`                | `root`                          | Set the owner of the path                                                                      |
