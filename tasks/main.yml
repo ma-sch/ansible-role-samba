@@ -4,8 +4,8 @@
 - name: Include OS specific variables
   include_vars: "{{ item }}"
   with_first_found:
-    - "os_{{ ansible_distribution }}.yml"
-    - "os_{{ ansible_os_family }}.yml"
+    - "os_{{ ansible_facts['distribution'] }}.yml"
+    - "os_{{ ansible_facts['os_family'] }}.yml"
   tags: samba
 
 - name: Install Samba packages
@@ -40,7 +40,7 @@
   package:
     name: "{{ samba_selinux_packages }}"
     state: present
-  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
+  when: ansible_facts['selinux'] is defined and ansible_facts['selinux']['status'] == 'enabled'
   tags: samba
 
 - name: Make sure SELinux boolean settings are correct
@@ -49,7 +49,7 @@
     state: true
     persistent: true
   with_items: "{{ samba_selinux_booleans }}"
-  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
+  when: ansible_facts['selinux'] is defined and ansible_facts['selinux']['status'] == 'enabled'
   tags: samba
 
 - name: Create Samba shares root directory

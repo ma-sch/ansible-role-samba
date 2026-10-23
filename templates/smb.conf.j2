@@ -5,7 +5,7 @@
 
 [global]
   # Server information
-  netbios name = {% if samba_netbios_name is defined %}{{ samba_netbios_name }}{% else %}{{ ansible_hostname }}{% endif %}
+  netbios name = {% if samba_netbios_name is defined %}{{ samba_netbios_name }}{% else %}{{ ansible_facts['hostname'] }}{% endif %}
 
   workgroup = {{ samba_workgroup }}
 {% if samba_realm is defined %}
